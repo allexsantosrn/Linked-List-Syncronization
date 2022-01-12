@@ -2,6 +2,7 @@ package core;
 
 public class InserirItem extends Thread {
 	
+	// Lista compartilhada. //
 	private ListaCompartilhada lista;
 
 	public InserirItem(String name, ListaCompartilhada lista) {
@@ -11,8 +12,8 @@ public class InserirItem extends Thread {
 
 	@Override
 	public void run() {
-		int valor = (int) (Math.random() * 50);
-		System.out.println(valor);
+		int valor = (int) (Math.random() * 10);
+		
 	}
 	
 }

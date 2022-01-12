@@ -2,8 +2,10 @@ package core;
 
 public class RemoverItem extends Thread {
 
+	// Lista compartilhada.
 	private ListaCompartilhada lista;
 
+	// Construtor.
 	public RemoverItem(String name, ListaCompartilhada lista) {
 		super(name);
 		this.lista = lista;
@@ -11,7 +13,7 @@ public class RemoverItem extends Thread {
 
 	@Override
 	public void run() {
-		int valor = (int) (Math.random() * 100);
-		System.out.println(valor);
+		int valor = (int) (Math.random() * 10);
+		lista.removerItem(valor);
 	}
 }
