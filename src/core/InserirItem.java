@@ -2,9 +2,10 @@ package core;
 
 public class InserirItem extends Thread {
 
-	// Lista compartilhada. //
+	// Lista compartilhada.
 	private ListaCompartilhada lista;
 
+	// Construtor.
 	public InserirItem(String name, ListaCompartilhada lista) {
 		super(name);
 		this.lista = lista;

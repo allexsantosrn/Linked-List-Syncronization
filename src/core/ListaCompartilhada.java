@@ -9,8 +9,10 @@ public class ListaCompartilhada {
 	// Lista compartilhada.
 	private LinkedList<Integer> lista;
 
+	// Atributo ReentrantReadWriteLock
 	private ReentrantReadWriteLock rrwLock;
 
+	// Atributo ReentrantLock
 	private ReentrantLock reentrantLock;
 
 	// Construtor da lista compartilhada.
