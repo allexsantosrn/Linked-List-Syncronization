@@ -6,23 +6,26 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 public class ListaCompartilhada {
 
+	// Lista compartilhada.
 	private LinkedList<Integer> lista;
 
-	private ReentrantReadWriteLock acessoLock;
+	private ReentrantReadWriteLock rrwLock;
 	
-	private ReentrantLock inserirLock;
+	private ReentrantLock reentrantLock;
 
+	// Construtor da lista compartilhada.
 	public ListaCompartilhada() {
 
 		lista = new LinkedList<>();
-		acessoLock = new ReentrantReadWriteLock(true);
-		inserirLock = new ReentrantLock(true);
+		rrwLock = new ReentrantReadWriteLock(true);
+		reentrantLock = new ReentrantLock(true);
 	}
 
 	public void removerItem(Integer valor) {
 
-		acessoLock.writeLock().lock();
-		System.out.println(Thread.currentThread().getName() + " adquiriu acesso para remoção do item " + valor + ".");
+		rrwLock.writeLock().lock();
+		String threadName = Thread.currentThread().getName();
+		System.out.println(threadName + " adquiriu acesso para remoção do item " + valor + ".");
 
 		try {
 			if (lista.remove(valor)) {
@@ -31,16 +34,17 @@ public class ListaCompartilhada {
 				System.out.println("Elemento " + valor + " não foi removido porque não se encontra na lista.");
 			}
 		} finally {
-			acessoLock.writeLock().unlock();
-			System.out.println(Thread.currentThread().getName() + " finalizou e liberou acesso.");
+			rrwLock.writeLock().unlock();
+			System.out.println(threadName + " finalizou e liberou acesso.");
 		}
 
 	}
 
 	public void buscarItem(Integer valor) {
 
-		acessoLock.readLock().lock();
-		System.out.println(Thread.currentThread().getName() + " adquiriu acesso para consulta do item " + valor + ".");
+		rrwLock.readLock().lock();
+		String threadName = Thread.currentThread().getName();
+		System.out.println(threadName + " adquiriu acesso para consulta do item " + valor + ".");
 
 		try {
 			if (lista.contains(valor)) {
@@ -49,25 +53,26 @@ public class ListaCompartilhada {
 				System.out.println("Elemento " + valor + " não foi localizado na lista.");
 			}
 		} finally {
-			acessoLock.readLock().unlock();
-			System.out.println(Thread.currentThread().getName() + " finalizou e liberou acesso.");
+			rrwLock.readLock().unlock();
+			System.out.println(threadName + " finalizou e liberou acesso.");
 		}
 
 	}
 	
 	public void inserirItem(Integer valor) {
 		
-		acessoLock.writeLock().lock();
-		inserirLock.lock();
-		System.out.println(Thread.currentThread().getName() + " adquiriu acesso para inserção do item " + valor + ".");		
+		rrwLock.readLock().lock();
+		reentrantLock.lock();
+		String threadName = Thread.currentThread().getName();
+		System.out.println(threadName + " adquiriu acesso para inserção do item " + valor + ".");		
 		
 		try {
 			lista.add(valor);
 			System.out.println("Elemento " + valor + " inserido na lista.");
 		} finally {
-			acessoLock.writeLock().unlock();
-			inserirLock.unlock();
-			System.out.println(Thread.currentThread().getName() + " finalizou e liberou acesso.");
+			rrwLock.readLock().unlock();
+			reentrantLock.unlock();
+			System.out.println(threadName + " finalizou e liberou acesso.");
 		}
 
 	}

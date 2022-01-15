@@ -13,7 +13,7 @@ public class RemoverItem extends Thread {
 
 	@Override
 	public void run() {
-		int valor = (int) (Math.random() * 10);
+		int valor = (int) (Math.random() * 50);
 		lista.removerItem(valor);
 	}
 }
