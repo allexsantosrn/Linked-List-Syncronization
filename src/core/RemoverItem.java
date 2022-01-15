@@ -11,6 +11,8 @@ public class RemoverItem extends Thread {
 		this.lista = lista;
 	}
 
+	// Gera um número aleatório (até o valor de 50) e invoca o método de
+	// remoção do item na lista compartilhada.
 	@Override
 	public void run() {
 		int valor = (int) (Math.random() * 50);
