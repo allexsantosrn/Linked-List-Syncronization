@@ -39,7 +39,7 @@ public class ListaCompartilhada {
 
 	public void buscarItem(Integer valor) {
 
-		acessoLock.writeLock().lock();
+		acessoLock.readLock().lock();
 		System.out.println(Thread.currentThread().getName() + " adquiriu acesso para consulta do item " + valor + ".");
 
 		try {
@@ -49,7 +49,7 @@ public class ListaCompartilhada {
 				System.out.println("Elemento " + valor + " não foi localizado na lista.");
 			}
 		} finally {
-			acessoLock.writeLock().unlock();
+			acessoLock.readLock().unlock();
 			System.out.println(Thread.currentThread().getName() + " finalizou e liberou acesso.");
 		}
 
