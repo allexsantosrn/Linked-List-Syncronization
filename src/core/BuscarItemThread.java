@@ -1,12 +1,12 @@
 package core;
 
-public class BuscarItem extends Thread {
+public class BuscarItemThread extends Thread {
 
 	// Lista compartilhada.
 	private ListaCompartilhada lista;
 
 	// Construtor.
-	public BuscarItem(String name, ListaCompartilhada lista) {
+	public BuscarItemThread(String name, ListaCompartilhada lista) {
 		super(name);
 		this.lista = lista;
 	}

@@ -10,15 +10,15 @@ public class Main {
 		ListaCompartilhada listacompartilhada = new ListaCompartilhada();
 
 		// Criando os vetores.
-		BuscarItem[] buscar = new BuscarItem[NUM_THREADS];
-		InserirItem[] inserir = new InserirItem[NUM_THREADS];
-		RemoverItem[] remover = new RemoverItem[NUM_THREADS];
+		BuscarItemThread[] buscar = new BuscarItemThread[NUM_THREADS];
+		InserirItemThread[] inserir = new InserirItemThread[NUM_THREADS];
+		RemoverItemThread[] remover = new RemoverItemThread[NUM_THREADS];
 
 		// Criando as threads.
 		for (int i = 0; i < NUM_THREADS; i++) {
-			buscar[i] = new BuscarItem("ThreadBusca " + (i + 1), listacompartilhada);
-			inserir[i] = new InserirItem("ThreadInserção " + (i + 1), listacompartilhada);
-			remover[i] = new RemoverItem("ThreadRemoção " + (i + 1), listacompartilhada);
+			buscar[i] = new BuscarItemThread("ThreadBusca " + (i + 1), listacompartilhada);
+			inserir[i] = new InserirItemThread("ThreadInserção " + (i + 1), listacompartilhada);
+			remover[i] = new RemoverItemThread("ThreadRemoção " + (i + 1), listacompartilhada);
 		}
 
 		// Iniciando as threads.
