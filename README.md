@@ -4,7 +4,9 @@
 - Alexandre Dantas dos Santos
 
 ## Objetivos
-- Implementar a solução da multiplicação entre duas matrizes por meio concorrente e sequencial e realizar a comparação entre essas soluções no tocante ao tempo de execução.
+- Considere uma lista simplesmente encadeada cujo acesso é compartilhado por três tipos de threads: o tipo B realiza operações de busca sobre a lista, o tipo I realiza operações de inserção de itens no final da lista e o tipo R realiza operações de remoção de itens a partir de qualquer posição da lista. Threads do tipo B meramente realizam operações de leitura sobre a lista e, portanto, podem ser executadas de forma simultânea com as outras. Por sua vez, as operações de
+inserção realizadas pelas threads do tipo I devem ser mutuamente exclusivas a fim de impedir que duas threads estejam inserindo itens no final da lista ao mesmo tempo. Por fim, no máximo uma thread do tipo R pode acessar a lista por vez para
+realizar remoção de itens e essa operação deve ser mutuamente exclusiva com relação às demais (busca e inserção).
 
 ## Metodologia
 - O projeto foi desenvolvido na Linguagem de Programação Java através da IDE Eclipse (JAVA 11).
